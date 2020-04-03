@@ -1,0 +1,73 @@
+
+.general
+{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 750px;
+    top: 125px;
+}
+.form-control.peque
+{
+    position: absolute;
+    width: 180px;
+    left: 20px;
+}
+.form-control.peque.d
+{ 
+    position: absolute;
+    left: 200px;
+    top: 72px;
+}
+.form-control.peque.v
+{ 
+    left: 200px;
+    top: 125px;
+}
+
+.form-control.largos
+{
+    position: relative;
+    width: 360px;
+    left: 20px;
+}
+.btn.btn-primary.bu
+{
+    position: relative;
+    width: 360px;
+    left: 20px;
+}
+
+.head
+{
+    width: 100%;
+    height: 35px;
+    background-color: indianred;
+}
+
+.decoracion
+{
+    border-radius: 15px;
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    background-color: #f3f2b5;
+    left: 200px;
+    bottom: 60px;
+}
+
+.letras 
+{
+    position: relative;
+    top: 60px;
+}
+
+.letras > h1
+{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.letras > h2
+{
+    font-family: 'Times New Roman', Times, serif;
+}
