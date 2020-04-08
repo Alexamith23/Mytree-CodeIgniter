@@ -7,6 +7,18 @@ class Login_controler extends CI_Controller {
 	{
 		$this->load->view('Loguin_vista');
     }
+    public function dashboard()
+	{
+        if($this->session->has_userdata('user'))
+        {
+            $this->load->view('Dashboard_Vista');
+        }
+        else
+        {
+            $this->session->set_flashdata('error','No ha iniciado sesión');
+            redirect(site_url(['Login_controler','index']));
+        }
+    }
     public function ingresar()
 	{
         $this->load->model('Login_modelo');        
@@ -15,12 +27,20 @@ class Login_controler extends CI_Controller {
         $respuesta = $this->Login_modelo->authenticate($username, $password);
         if($respuesta)
         {          
-            echo "<h1>Dashboard $username</h1>";
+            $this->session->set_userdata('user',$respuesta);
+            redirect(site_url(['Login_controler','dashboard']));
         }
         else
         {       
-            $this->load->view('Loguin_vista');
-            echo "<h1>Usuario o contraseña invalido</h1>";
+            $this->session->set_flashdata('error','Usuario o contraseña invalido');
+            redirect(site_url(['Login_controler','index']));
         }
     }
+
+    public function salir()
+	{
+		$this->session->sess_destroy();
+    	$this->session->set_flashdata('error', 'Inicie sesión nuevamente');
+		redirect(site_url(['Login_controler','index']));
+	}
 }

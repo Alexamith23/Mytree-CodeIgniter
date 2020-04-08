@@ -109,7 +109,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
-                    <label ><a href="">Ya tengo una cuenta </a></label>
+                    <label ><a href="<?php echo site_url(["Login_controler","index"])?>">Ya tengo una cuenta </a></label>
                 </div>
             </div>
         </div>

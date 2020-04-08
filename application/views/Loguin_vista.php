@@ -10,7 +10,11 @@
     <title>Login</title>
 </head>
 <body>
+
     <div class="container">
+        <div class="msg">
+            <?php echo $this->session->flashdata('error');?>
+        </div>
         <form action="<?php echo site_url(['Login_controler','ingresar'])?>" method="post">
             <div class="container-fluid">
                 <div class="row">
@@ -31,7 +35,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-                        <input type="number" class="form-control" id="contra" name="contra" placeholder="Contrseña">
+                        <input type="password" class="form-control" id="contra" name="contra" placeholder="Contrseña">
                     </div>
                 </div>
             </div>
@@ -40,6 +44,13 @@
                 <div class="row">
                     <div class="col-md-3">
                     <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label ><a href="<?php echo site_url(["Registro_controler","index"])?>">Crear cuenta</a></label>
+                    </div>
                 </div>
             </div>
         </div>
