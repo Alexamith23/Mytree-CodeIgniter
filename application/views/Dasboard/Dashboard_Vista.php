@@ -1,6 +1,8 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     $admin = $this->session->user->administrador;
+    $user = $this->session->user->correo;
+    $persona = $this->session->user->id;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,7 @@
                         <span  class="icon-bar"></span>
                         <span  class="icon-bar"></span>
                     </button>
-                    <a href="" class="navbar-brand"><?php echo $this->session->user->correo;?></a>                  
+                    <a href="<?php echo site_url(["Login_controler","dashboard"])?>" class="navbar-brand"><?php echo $user;?></a>                  
                 </div>
                 <ul class ="nav navbar-nav navbar-right">
                     <li><a href="<?php echo site_url(["Login_controler","salir"])?>">Salir</a></li>
@@ -34,7 +36,7 @@
                     {
                         echo '<div class="collapse navbar-collapse" id="navbar1">
                             <ul class ="nav navbar-nav">
-                                <li><a href="#">Mis arboles</a></li>
+                                <li><a href='.site_url(["Login_controler","verArboles/$persona"]).'>Mis arboles</a></li>
                                 <li><a href="#">Comprar</a></li>
                             </ul>
                         </div>';
@@ -67,20 +69,6 @@
             </div>";
     }
     ?>
-    <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-5">
-                <br>
-                <h1>¿Sabías qué?</h1>
-                    <h4>
-                        <li>1 árbol proporciona oxígeno para que respiren 3 personas al día . Por eso los bosques son los "pulmones del planeta".</li><br>
-                        <li>Los bosques cubren el 31% de la superfcie terrestre y concentran más de la mitad de la biodiversidad de planeta . 
-                        Contribuyen a la conservación de las fuentes de agua, la prevención de inundaciones y protección para los suelos. </li><br>
-                        <li>Desaparecen por día unas 13 millones de hectáreas de bosques nativos , lo que equivale a 1 vez y media la ciudad de Buenos Aires. </li>
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 </body>
 </html>

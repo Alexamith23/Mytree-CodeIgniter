@@ -11,7 +11,8 @@ class Login_controler extends CI_Controller {
 	{
         if($this->session->has_userdata('user'))
         {
-            $this->load->view('Dashboard_Vista');
+            $this->load->view('Dasboard/Dashboard_Vista');
+            $this->load->view('Dasboard/Decoration_vista');
         }
         else
         {
@@ -42,5 +43,17 @@ class Login_controler extends CI_Controller {
 		$this->session->sess_destroy();
     	$this->session->set_flashdata('error', 'Inicie sesión nuevamente');
 		redirect(site_url(['Login_controler','index']));
-	}
+    }
+    
+
+    public function verArboles($user)
+	{
+        $this->load->model('Login_modelo'); 
+        $respuesta = $this->Login_modelo->cantidadArboles($user);
+        $respuestall = $this->Login_modelo->misArboles($user);
+        $this->session->set_userdata('misArboles',$respuesta);
+        $this->load->view('Dasboard/Dashboard_Vista');
+        $this->load->view('Dasboard/misArboles_vista');
+    }
+
 }
