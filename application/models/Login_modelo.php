@@ -46,4 +46,54 @@ class Login_modelo extends CI_Model
       return false;
     }
   }
+
+  public function eliminarArbolM($id_cliente_arbol,$nombre, $id_arbol)
+  {
+    $query = $this->db->query("DELETE FROM cliente_arbol WHERE id = '$id_cliente_arbol'");
+    $queryll = $this->db->query("DELETE FROM arbol WHERE nombre ='$nombre'");
+    $querylll = $this->db->query("DELETE FROM ARBOL_imagen WHERE arbol = '$id_arbol'");
+    if ($query && $queryll && $querylll) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function arbolesRegistrados()
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS cantidad FROM arbol");
+    if ($query->result()) 
+    {
+      return $query->result()[0];
+    } 
+    else 
+    {
+      return false;
+    }
+  }
+  public function cantPersonas()
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS cantidad FROM persona");
+    if ($query->result()) 
+    {
+      return $query->result()[0];
+    } 
+    else 
+    {
+      return false;
+    }
+  }
+  public function arboles_clientes()
+  {
+    $query = $this->db->query("select count(distinct id_owner) AS cantidad from cliente_arbol");
+    if ($query->result()) 
+    {
+      return $query->result()[0];
+    } 
+    else 
+    {
+      return false;
+    }
+  }
+  
 }

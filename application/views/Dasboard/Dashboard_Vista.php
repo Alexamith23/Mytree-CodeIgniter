@@ -37,7 +37,7 @@
                         echo '<div class="collapse navbar-collapse" id="navbar1">
                             <ul class ="nav navbar-nav">
                                 <li><a href='.site_url(["Login_controler","verArboles/$persona"]).'>Mis arboles</a></li>
-                                <li><a href="#">Comprar</a></li>
+                                <li><a href='.site_url(["Login_controler","comprar/$persona"]).'>Comprar</a></li>
                             </ul>
                         </div>';
                     }
@@ -45,7 +45,7 @@
                     {
                         echo '<div class="collapse navbar-collapse" id="navbar1">
                             <ul class ="nav navbar-nav">
-                                <li><a href="#">Gráficos</a></li>
+                                <li><a href='.site_url(["Login_controler","graf"]).'>Gráficos</a></li>
                                 <li><a href="#">CRUD arboles</a></li>
                                 <li><a href="#">Clientes</a></li>
                             </ul>
@@ -55,20 +55,6 @@
             </div>
         </nav>
     </header>
-    <br>
-    <?php
-    if($admin=='t')
-    {
-        echo "<div class='container-fluid'>
-                <div class='row'>
-                    <div class='col-md-5'>
-                        <br>
-                        <h1>Bienvenido administrador</h1>
-                    </div>
-                </div>
-            </div>";
-    }
-    ?>
-   
+    <br><br>
 </body>
 </html>
