@@ -32,7 +32,7 @@ class Login_modelo extends CI_Model
   }
   public function misArboles($user)
   {
-    $query = $this->db->query("select a.id,e.especie, a.nombre, a.sizea
+    $query = $this->db->query("select a.id,e.especie, a.nombre, a.sizea, ca.id as id2
     from CLIENTE_ARBOL as ca 
     inner join arbol as a
     on ca.id_arbol = a.id

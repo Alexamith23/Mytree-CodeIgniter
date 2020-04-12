@@ -46,8 +46,8 @@
                         echo '<div class="collapse navbar-collapse" id="navbar1">
                             <ul class ="nav navbar-nav">
                                 <li><a href='.site_url(["Login_controler","graf"]).'>Gráficos</a></li>
-                                <li><a href="#">CRUD arboles</a></li>
-                                <li><a href="#">Clientes</a></li>
+                                <li><a href='.site_url(["Arbol_controler","index"]).'>CRUD arboles</a></li>
+                                <li><a href='.site_url(["Arbol_controler","clientes"]).'>Clientes</a></li>
                             </ul>
                         </div>';
                     }

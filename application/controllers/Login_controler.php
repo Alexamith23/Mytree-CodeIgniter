@@ -50,10 +50,11 @@ class Login_controler extends CI_Controller {
 	{
         $this->load->model('Login_modelo'); 
         $respuesta = $this->Login_modelo->cantidadArboles($user);
-        $respuestall = $this->Login_modelo->misArboles($user);
         $this->session->set_userdata('misArboles',$respuesta);
+        $result = $this->Login_modelo->misArboles($user);
+        $data = array('consulta' => $result);
         $this->load->view('Dasboard/Dashboard_Vista');
-        $this->load->view('Dasboard/misArboles_vista');
+        $this->load->view('Dasboard/misArboles_vista',$data);
     }
 
     public function comprar($user)

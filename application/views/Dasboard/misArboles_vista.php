@@ -21,22 +21,13 @@
         }
         else
         {
-            $conn = pg_connect("host=localhost dbname=tree user=postgres password=shemaisrael");
-            $sql = "select a.id,e.especie, a.nombre, a.sizea, ca.id
-            from CLIENTE_ARBOL as ca 
-            inner join arbol as a
-            on ca.id_arbol = a.id
-            inner join especie as e
-            on a.especie = e.id
-            and ca.id_owner = '$persona'";
-            $ejecucion = pg_query($conn,$sql);
             $html = "";
-            while ($row = pg_fetch_row($ejecucion)) 
-            {   
-                $html .= "<tr id='row_{$row[0]}'><td>{$row[0]}</td><td>{$row[1]}</td>
-                <td>{$row[2]}</td><td>{$row[3]}</td>
-                <td><a href=".site_url(['Login_controler',"album/{$row[0]}"]).">Fotos</a> / <a href=".site_url(['Login_controler',"eliminarArbol/{$row[4]}/{$row[2]}/{$row[0]}"]).">Eliminar</a></td>";
-            } 
+            foreach ($consulta->result() as $fila ) {
+                $html .= "<tr id='$fila->id'><td>$fila->id</td><td>$fila->especie</td>
+                <td>$fila->nombre</td><td>$fila->sizea</td>
+                <td><a href=".site_url(['Login_controler',"album/$fila->id"]).">Fotos</a>
+                / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id"]).">Eliminar</a></td>";
+            }
             echo "
             <br>
             <h1>Hi <strong>$nombre</strong> estos son sus árboles</h1>
@@ -53,13 +44,11 @@
                     </tr>
                 </thead>
             <tbody>
-              $html
+                $html
             </tbody>
           </table>";
         }
-   
     ?>
     <br>
-    
 </body>
 </html>
