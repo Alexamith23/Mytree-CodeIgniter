@@ -39,7 +39,7 @@
                             <td>$fila->monto</td>
                             <td><a href=".site_url(['',""]).">E</a>
                             / <a href=".site_url(['',""]).">D</a>
-                            / <a href=".site_url(['',""]).">I</a></td></td>";
+                            / <a href=".site_url(['Arbol_controler',"formulario/$fila->id"]).">I</a></td></td>";
             }
             echo "
             <br>

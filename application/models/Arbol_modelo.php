@@ -32,9 +32,25 @@ class Arbol_modelo extends CI_Model
         }
     }
 
+    function guardar($foto,$id)
+    {
+        $query = $this->db->query("INSERT INTO arbol_imagen(ruta,arbol)VALUES('$foto','$id')");
+        if ($query) {
+            return $query;
+            } else {
+            return false;
+            }
+    }
 
-
-
+    function fotos()
+    {
+        $query = $this->db->query("SELECT * FROM arbol_imagen");
+        if ($query) {
+            return $query;
+            } else {
+            return false;
+            }
+    }
 
 
 }
