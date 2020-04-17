@@ -42,14 +42,17 @@ class Arbol_modelo extends CI_Model
             }
     }
 
-    function fotos()
+    function fotos($id)
     {
-        $query = $this->db->query("SELECT * FROM arbol_imagen");
-        if ($query) {
+        $query = $this->db->query("SELECT * FROM arbol_imagen WHERE arbol = $id");
+        if ($query) 
+        {
             return $query;
-            } else {
+        } 
+        else 
+        {
             return false;
-            }
+        }
     }
 
 

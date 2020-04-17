@@ -1,5 +1,5 @@
 <?php
-    defined('BASEPATH') OR exit('No direct script access allowed');
+    
     $mensaje = $this->session->flashdata('retorno');
     $arbol = $this->session->flashdata('arbol');
 ?>
@@ -15,6 +15,7 @@
 <body>
 <div class="container">
     <form action="<?php echo site_url(['Arbol_controler',"Cargarimagen/$arbol"])?>" method="post" enctype="multipart/form-data">
+    <input id="prodId" name="prodId" type="hidden" value="xm234jq">
         <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
@@ -41,6 +42,16 @@
             </tr>
         </thead>
         <tbody>
+            <!--<img src="<?php # echo base_url(); ?>uploads/thL7I78TDN.jpg" width="100" height="100"/>-->
+            <?php
+                $html = "";
+                foreach ($consulta->result() as $fila) {
+                    echo "<tr id='$fila->id'>
+                                <td>$fila->id</td>
+                                <td>".'<img  alt="Adjunto" class="" src="' .base_url("$fila->ruta"). '" width = "250px"  height="250px"/>'."</td>
+                        </tr>";
+                }
+            ?>
         </tbody>
     </table>
 
