@@ -53,6 +53,28 @@ class Arbol_controler extends CI_Controller {
         $this->formulario($id_arbol);
     }
 
-    
+    public function crearArbol()
+    {
+        $this->load->model('Arbol_modelo');
 
+        $result = $this->Arbol_modelo->correos();
+        $resultll = $this->Arbol_modelo->arbol();
+
+        $data = array('consulta' => $result,'consultall' => $resultll);
+
+        $this->load->view('Dasboard/Dashboard_Vista');
+        $this->load->view('Crear_arbol',$data);
+    }
+    public function registrar()
+    {
+        $this->load->model('Arbol_modelo');
+        $correo = $this->input->post('mail');
+        $especie = $this->input->post('tipo');
+        $nombre = $this->input->post('arbol');
+        $monto = $this->input->post('monto');
+        $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
+        $result2 = $this->Arbol_modelo->arbol_persona($correo);
+        $this->crearArbol();
+    }
+  
 }

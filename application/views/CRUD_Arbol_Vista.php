@@ -29,7 +29,7 @@
 </head>
 <body>
 <br>
-<a id="add" href="#" class ="button"><center id="let">Add</center></a>
+<a id="add" href="<?php echo site_url(["Arbol_controler","crearArbol"])?>" class ="button"><center id="let">Add</center></a>
 <?php
         $html = "";
             foreach ($consulta->result() as $fila) {

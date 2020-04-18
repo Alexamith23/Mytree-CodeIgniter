@@ -55,5 +55,54 @@ class Arbol_modelo extends CI_Model
         }
     }
 
-
+    function correos()
+    {
+        $query = $this->db->query("SELECT id,correo FROM persona");
+        if ($query) 
+        {
+            return $query;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+    function arbol()
+    {
+        $query = $this->db->query("SELECT id,especie FROM especie");
+        if ($query) 
+        {
+            return $query;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+    function registrar($especie,$nombre,$monto)
+    {
+        $query = $this->db->query("INSERT INTO arbol(especie, nombre, monto) VALUES('$especie','$nombre','$monto')");
+        if ($query) 
+        {
+            return $query;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+    
+    function arbol_persona($correo)
+    {
+        $query = $this->db->query("insert into cliente_arbol(id_owner, id_arbol) VALUES((SELECT id FROM persona WHERE correo = 'alex@gmail.com'),
+        (SELECT MAX(id) FROM arbol))");
+        if ($query) 
+        {
+            return $query;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
 }
