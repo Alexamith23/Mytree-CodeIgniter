@@ -3,6 +3,7 @@
     $persona = $this->session->user->id;
     $nombre = $this->session->user->nombre;
     $mensaje = $this->session->error;
+    $admin = $this->session->user->administrador;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,7 @@
                             <td>$fila->nombre</td><td>$fila->sizea</td>
                             <td>$fila->monto</td>
                             <td><a href=".site_url(['',""]).">E</a>
-                            / <a href=".site_url(['',""]).">D</a>
+                            / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"]).">D</a>
                             / <a href=".site_url(['Arbol_controler',"formulario/$fila->id"]).">I</a></td></td>";
             }
             echo "

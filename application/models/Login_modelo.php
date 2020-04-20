@@ -19,8 +19,6 @@ class Login_modelo extends CI_Model
       return false;
     }
   }
-
-
   public function cantidadArboles($user)
   {
     $query = $this->db->query("SELECT COUNT(id_owner) AS cantidad FROM CLIENTE_ARBOL where id_owner = '$user'");
@@ -50,8 +48,8 @@ class Login_modelo extends CI_Model
   public function eliminarArbolM($id_cliente_arbol,$nombre, $id_arbol)
   {
     $query = $this->db->query("DELETE FROM cliente_arbol WHERE id = '$id_cliente_arbol'");
-    $queryll = $this->db->query("DELETE FROM arbol WHERE nombre ='$nombre'");
     $querylll = $this->db->query("DELETE FROM ARBOL_imagen WHERE arbol = '$id_arbol'");
+    $queryll = $this->db->query("DELETE FROM arbol WHERE nombre ='$nombre'");
     if ($query && $queryll && $querylll) {
       return true;
     } else {

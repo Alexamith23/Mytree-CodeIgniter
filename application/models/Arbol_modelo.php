@@ -94,7 +94,7 @@ class Arbol_modelo extends CI_Model
     
     function arbol_persona($correo)
     {
-        $query = $this->db->query("insert into cliente_arbol(id_owner, id_arbol) VALUES((SELECT id FROM persona WHERE correo = 'alex@gmail.com'),
+        $query = $this->db->query("insert into cliente_arbol(id_owner, id_arbol) VALUES((SELECT id FROM persona WHERE correo = '$correo'),
         (SELECT MAX(id) FROM arbol))");
         if ($query) 
         {

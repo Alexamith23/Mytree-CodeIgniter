@@ -63,14 +63,22 @@ class Login_controler extends CI_Controller {
         $this->load->view('Tienda_vista');
     }
 
-    public function eliminarArbol($id_cliente_arbol,$nombre, $id_arbol)
+    public function eliminarArbol($id_cliente_arbol,$nombre, $id_arbol, $admin,$user)
 	{
         $this->load->model('Login_modelo'); 
         $respuesta = $this->Login_modelo->eliminarArbolM($id_cliente_arbol,$nombre, $id_arbol);
-        $this->load->view('Dasboard/Dashboard_Vista');
-        $this->load->view('Dasboard/misArboles_vista');
-        if(!$respuesta)
+        if($respuesta && $admin == "t")
         {
+            redirect(site_url(["Arbol_controler","index"]));
+        }
+        else if($respuesta && $admin == "f")
+        {
+            $this->verArboles($user);
+        }
+        else if(!$respuesta)
+        {
+            $this->load->view('Dasboard/Dashboard_Vista');
+            $this->load->view('Dasboard/misArboles_vista');
             $this->session->set_flashdata('error', 'No se ha podido eliminar');
         } 
     }

@@ -4,6 +4,7 @@
     $persona = $this->session->user->id;
     $nombre = $this->session->user->nombre;
     $mensaje = $this->session->error;
+    $admin = $this->session->user->administrador;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@
                 $html .= "<tr id='$fila->id'><td>$fila->id</td><td>$fila->especie</td>
                 <td>$fila->nombre</td><td>$fila->sizea</td>
                 <td><a href=".site_url(['Login_controler',"album/$fila->id"]).">Fotos</a>
-                / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id"]).">Eliminar</a></td>";
+                / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"]).">Eliminar</a></td>";
             }
             echo "
             <br>

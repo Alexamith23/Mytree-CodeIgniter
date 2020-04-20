@@ -72,9 +72,11 @@ class Arbol_controler extends CI_Controller {
         $especie = $this->input->post('tipo');
         $nombre = $this->input->post('arbol');
         $monto = $this->input->post('monto');
-        $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
+        echo "<h1>$correo</h1>";
+         $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
         $result2 = $this->Arbol_modelo->arbol_persona($correo);
         $this->crearArbol();
     }
-  
+    
+    
 }
