@@ -72,11 +72,46 @@ class Arbol_controler extends CI_Controller {
         $especie = $this->input->post('tipo');
         $nombre = $this->input->post('arbol');
         $monto = $this->input->post('monto');
-        echo "<h1>$correo</h1>";
          $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
         $result2 = $this->Arbol_modelo->arbol_persona($correo);
         $this->crearArbol();
     }
+
+    public function editar($nombre_arbol, $id_usuario)
+    {
+        $this->load->model('Arbol_modelo');
+        $result = $this->Arbol_modelo->correos();
+        $resultll = $this->Arbol_modelo->arbol();
+        $resultlll = $this->Arbol_modelo->cargar_datos_editar($nombre_arbol, $id_usuario);
+        $data = array('consulta' => $result,'consultall' => $resultll,'consultalll' => $resultlll);
+        $this->load->view('Dasboard/Dashboard_Vista');
+        $this->load->view('Editar_vista',$data);
+    }
     
-    
+    public function registrarEdit()
+    {
+        $this->load->model('Arbol_modelo');
+        $id = $this->input->post('id_arbol');
+        $persona = $this->input->post('persona');
+        $correo = $this->input->post('mail');
+        $especie = $this->input->post('tipo');
+        $nombre = $this->input->post('arbol');
+        $size = $this->input->post('tam');
+        $result = $this->Arbol_modelo->registrarEditado($especie,$nombre,$size,$id);
+        if($result)
+        {
+            $this->session->set_flashdata('editado',"Se editó con éxito");
+        }
+        else{
+            $this->session->set_flashdata('editado',"No se pudo editar");
+        }
+        $this->editar($nombre,$persona);
+    }
+
+    public function borarFoto($id_relacion, $id_arbol)
+    {
+        $this->load->model('Arbol_modelo');
+        $result = $this->Arbol_modelo->borrar_foto($id_relacion);
+        $this->formulario($id_arbol);
+    }
 }

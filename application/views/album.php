@@ -1,5 +1,4 @@
 <?php
-    
     $mensaje = $this->session->flashdata('retorno');
     $arbol = $this->session->flashdata('arbol');
 ?>
@@ -14,23 +13,6 @@
 </head>
 <body>
 <div class="container">
-    <form action="<?php echo site_url(['Arbol_controler',"Cargarimagen/$arbol"])?>" method="post" enctype="multipart/form-data">
-    <input id="prodId" name="prodId" type="hidden" value="xm234jq">
-        <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3">
-                    <input type="file" name="foto" id="foto"  class="form-control">
-                </div>
-        </div>
-        <br>
-        <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-        </div>
-    </form>
-    <?php echo "<h1>$mensaje</h1>" ?>
     <br>
     <center><h1>Álbum de fotos</h1></center>
     <br>
@@ -39,22 +21,35 @@
             <tr>
                 <th scope='col'>#</th>
                 <th scope='col'>Foto</th>
+                <th scope='col'>Borrar</th>
             </tr>
         </thead>
         <tbody>
-            <!--<img src="<?php # echo base_url(); ?>uploads/thL7I78TDN.jpg" width="100" height="100"/>-->
             <?php
                 $html = "";
                 foreach ($consulta->result() as $fila) {
                     echo "<tr id='$fila->id'>
                                 <td>$fila->id</td>
                                 <td>".'<img  alt="Adjunto" class="" src="' .base_url("$fila->ruta"). '" width = "250px"  height="250px"/>'."</td>
+                                <td><a href=".site_url(['Arbol_controler',"borarFoto/$fila->id/$fila->arbol"]).">Delete</a></td>
                         </tr>";
                 }
             ?>
         </tbody>
     </table>
-
+    <form action="<?php echo site_url(['Arbol_controler',"Cargarimagen/$arbol"])?>" method="post" enctype="multipart/form-data">
+        <input id="prodId" name="prodId" type="hidden" value="xm234jq">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="file" name="foto" id="foto"  class="form-control"> <br>
+                        <button type="submit" class="btn btn-primary">Agregar</button><br>
+                        <?php echo "<h4>$mensaje</h4>" ?>
+                    </div>
+                </div>
+        </div>
+        
+    </form>
 </div>
     
 </body>

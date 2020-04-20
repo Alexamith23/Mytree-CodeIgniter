@@ -38,7 +38,7 @@
                             <td>$fila->id</td><td>$fila->nom</td><td>$fila->especie</td>
                             <td>$fila->nombre</td><td>$fila->sizea</td>
                             <td>$fila->monto</td>
-                            <td><a href=".site_url(['',""]).">E</a>
+                            <td><a href=".site_url(['Arbol_controler',"editar/$fila->nombre/$fila->persona"]).">E</a>
                             / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"]).">D</a>
                             / <a href=".site_url(['Arbol_controler',"formulario/$fila->id"]).">I</a></td></td>";
             }
