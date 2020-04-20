@@ -1,6 +1,7 @@
 <?php
     $mensaje = $this->session->flashdata('retorno');
     $arbol = $this->session->flashdata('arbol');
+    $admin = $this->session->user->administrador;
 ?>
 
 <!DOCTYPE html>
@@ -19,14 +20,19 @@
     <table class='table table-light'>
         <thead>
             <tr>
-                <th scope='col'>#</th>
-                <th scope='col'>Foto</th>
-                <th scope='col'>Borrar</th>
+            <th scope='col'>#</th>
+            <th scope='col'>Foto</th>
+            <?php if($admin == 't')
+            { 
+                echo "<th scope='col'>Borrar</th>";
+            }?>
+                
             </tr>
         </thead>
         <tbody>
             <?php
-                $html = "";
+            if($admin == 't')
+            {   
                 foreach ($consulta->result() as $fila) {
                     echo "<tr id='$fila->id'>
                                 <td>$fila->id</td>
@@ -34,22 +40,37 @@
                                 <td><a href=".site_url(['Arbol_controler',"borarFoto/$fila->id/$fila->arbol"]).">Delete</a></td>
                         </tr>";
                 }
+            }
+            else if($admin == 'f'){
+                foreach ($consulta->result() as $fila) {
+                    echo "<tr id='$fila->id'>
+                    <td>$fila->id</td>
+                    <td>".'<img  alt="Adjunto" class="" src="' .base_url("$fila->ruta"). '" width = "250px"  height="250px"/>'."</td>
+                </tr>";
+                }
+            }
             ?>
         </tbody>
     </table>
-    <form action="<?php echo site_url(['Arbol_controler',"Cargarimagen/$arbol"])?>" method="post" enctype="multipart/form-data">
-        <input id="prodId" name="prodId" type="hidden" value="xm234jq">
-        <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="file" name="foto" id="foto"  class="form-control"> <br>
-                        <button type="submit" class="btn btn-primary">Agregar</button><br>
-                        <?php echo "<h4>$mensaje</h4>" ?>
-                    </div>
-                </div>
-        </div>
-        
-    </form>
+    <?php 
+        if($admin == "t")
+        {
+            echo "<form action=".site_url(['Arbol_controler',"Cargarimagen/$arbol"])." method='post' enctype='multipart/form-data'>
+                        <input id='prodId' name='prodId' type='hidden' value='xm234jq'>
+                        <div class='container-fluid'>
+                                <div class='row'>
+                                    <div class='col-md-6'>
+                                        <input type='file' name='foto' id='foto' class='form-control'> <br>
+                                        <button type='submit' class='btn btn-primary'>Agregar</button><br>
+                                        <h4>$mensaje</h4>
+                                    </div>
+                                </div>
+                        </div>
+                     
+                    </form>";
+        }
+    
+    ?>
 </div>
     
 </body>

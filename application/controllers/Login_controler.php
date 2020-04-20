@@ -57,14 +57,37 @@ class Login_controler extends CI_Controller {
         $this->load->view('Dasboard/misArboles_vista',$data);
     }
 
-    public function comprar($user)
+    public function comprar()
 	{
+        $this->load->model('Arbol_modelo');
+        $result = $this->Arbol_modelo->arbol();
+        $data = array('consulta' => $result);
         $this->load->view('Dasboard/Dashboard_Vista');
-        $this->load->view('Tienda_vista');
+        $this->load->view('Tienda_vista',$data);
     }
+    public function solicitar()
+	{
+        $this->load->model('Arbol_modelo');
+        $correo = $this->input->post('correo');
+        $especie = $this->input->post('tipo');
+        $nombre = $this->input->post('arbol');
+        $monto = $this->input->post('monto');
+        $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
+        $result2 = $this->Arbol_modelo->arbol_persona($correo);
+        if($result && $result2)
+        {
+            $this->session->set_flashdata('creado',"El arbol ".$nombre." y con monto a donar de ".$monto."$ se solicitó exitosamente.");
+        }
+        else{
+            $this->session->set_flashdata('creado',"No se pudo crear");
+        }
+        $this->comprar();
+    }
+
 
     public function eliminarArbol($id_cliente_arbol,$nombre, $id_arbol, $admin,$user)
 	{
+        echo "$id_cliente_arbol, $nombre, $id_arbol,$admin,$user";
         $this->load->model('Login_modelo'); 
         $respuesta = $this->Login_modelo->eliminarArbolM($id_cliente_arbol,$nombre, $id_arbol);
         if($respuesta && $admin == "t")
@@ -98,5 +121,10 @@ class Login_controler extends CI_Controller {
         $this->session->set_userdata('arboles_clientes',$arboles_clientes);
         $this->load->view('Dasboard/Dashboard_Vista');
         $this->load->view('Graficos_vista');
+    }
+
+    function adquirir()
+    {
+        # code...
     }
 }
