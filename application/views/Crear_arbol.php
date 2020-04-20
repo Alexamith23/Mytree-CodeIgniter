@@ -1,5 +1,6 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
+    $mensaje = $this->session->flashdata('creado');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +56,9 @@
 <div class="form-group">
     <a href="arbolesAdmin.php" class="button d"><span class="icon-circle-with-cross d"></a>
 </div>
-
+<div class="form-group">
+    <h1><?php echo $mensaje ?> </h1>
+</div>
 </form>
 </body>
 </html>

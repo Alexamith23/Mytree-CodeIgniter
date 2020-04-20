@@ -72,8 +72,15 @@ class Arbol_controler extends CI_Controller {
         $especie = $this->input->post('tipo');
         $nombre = $this->input->post('arbol');
         $monto = $this->input->post('monto');
-         $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
+        $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
         $result2 = $this->Arbol_modelo->arbol_persona($correo);
+        if($result && $result2)
+        {
+            $this->session->set_flashdata('creado',"Se creó con éxito");
+        }
+        else{
+            $this->session->set_flashdata('creado',"No se pudo crear");
+        }
         $this->crearArbol();
     }
 
