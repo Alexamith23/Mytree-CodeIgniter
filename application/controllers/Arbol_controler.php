@@ -65,8 +65,9 @@ class Arbol_controler extends CI_Controller {
         $this->load->view('Dasboard/Dashboard_Vista');
         $this->load->view('Crear_arbol',$data);
     }
-    public function registrar()
+    public function registrar($admin)
     {
+        echo "<h1>$admin</h1>";
         $this->load->model('Arbol_modelo');
         $correo = $this->input->post('mail');
         $especie = $this->input->post('tipo');
@@ -74,14 +75,24 @@ class Arbol_controler extends CI_Controller {
         $monto = $this->input->post('monto');
         $result = $this->Arbol_modelo->registrar($especie,$nombre,$monto);
         $result2 = $this->Arbol_modelo->arbol_persona($correo);
-        if($result && $result2)
+        if($result && $result2 && $admin == 't')
         {
             $this->session->set_flashdata('creado',"Se creó con éxito");
+            $this->crearArbol();
         }
-        else{
+        else if(!($result && $result2)&& $admin == 't'){
             $this->session->set_flashdata('creado',"No se pudo crear");
+            $this->crearArbol();
         }
-        $this->crearArbol();
+        else if($result && $result2 && $admin == 'f')
+        {
+            $this->session->set_flashdata('creado',"El arbol ".$nombre." y con monto a donar de ".$monto."$ se solicitó exitosamente.");
+            redirect(site_url(["Login_controler","comprar"]));
+        }
+        else if(!($result && $result2) && $admin == 'f'){
+            $this->session->set_flashdata('creado',"No se pudo crear");
+            redirect(site_url(["Login_controler","comprar"]));
+        }
     }
 
     public function editar($nombre_arbol, $id_usuario)

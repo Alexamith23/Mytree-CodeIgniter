@@ -87,7 +87,6 @@ class Login_controler extends CI_Controller {
 
     public function eliminarArbol($id_cliente_arbol,$nombre, $id_arbol, $admin,$user)
 	{
-        echo "$id_cliente_arbol, $nombre, $id_arbol,$admin,$user";
         $this->load->model('Login_modelo'); 
         $respuesta = $this->Login_modelo->eliminarArbolM($id_cliente_arbol,$nombre, $id_arbol);
         if($respuesta && $admin == "t")

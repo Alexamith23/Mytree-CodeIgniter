@@ -24,10 +24,12 @@
         {
             $html = "";
             foreach ($consulta->result() as $fila ) {
+
                 $html .= "<tr id='$fila->id'><td>$fila->id</td><td>$fila->especie</td>
                 <td>$fila->nombre</td><td>$fila->sizea</td>
                 <td><a href=".site_url(['Arbol_controler',"formulario/$fila->id"]).">Fotos</a>
                 / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"]).">Eliminar</a></td>";
+                #/$fila->nombre/$fila->id/$admin/$persona
             }
             echo "
             <br>

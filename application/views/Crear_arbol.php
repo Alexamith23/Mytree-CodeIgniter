@@ -1,6 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     $mensaje = $this->session->flashdata('creado');
+    $admin = $this->session->user->administrador;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
 </head>
 <body>
 <br><br><br><br><br>
-<form action="<?php echo site_url(['Arbol_controler','registrar'])?>" method="post" class="formu">
+<form action="<?php echo site_url(['Arbol_controler','registrar/'.$admin])?>" method="post" class="formu">
 <div class="form-group">
     <label for="">Correo</label>
     <select class="form-control" name="mail" id="mail">
