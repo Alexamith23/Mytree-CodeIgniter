@@ -20,9 +20,12 @@ class Registro_controler extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('Home_vista');
+    }
+    public function registro()
+	{
 		$this->load->view('Registro_vista');
     }
-    
     public function save()
 	{
         $this->load->model('Registro_modelo');        

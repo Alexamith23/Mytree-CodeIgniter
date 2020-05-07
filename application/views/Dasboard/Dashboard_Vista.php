@@ -11,13 +11,19 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #color
+        {
+            background-color: #;
+        }
+    </style>
     <title>Dashboard</title>
 </head>
 <body>
     <div class="container">
     <br>
-    <header>
-        <nav class="navbar navbar-default navbar-fixed-top">
+    <header >
+        <nav class="navbar navbar-default navbar-fixed-top" id="color">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
@@ -29,7 +35,7 @@
                     <a href="<?php echo site_url(["Login_controler","dashboard"])?>" class="navbar-brand"><?php echo $user;?></a>                  
                 </div>
                 <ul class ="nav navbar-nav navbar-right">
-                    <li><a href="<?php echo site_url(["Login_controler","salir"])?>">Salir</a></li>
+                    <li><a href="<?php echo site_url(["Login_controler","salir"])?>" id="letras">Salir</a></li>
                 </ul>
                 <?php
                     if($admin=='f')

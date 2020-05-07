@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<?php echo base_url("Bootstrap/")?>style.css" rel="stylesheet">
     <style type="text/css">
 
     #add
@@ -31,7 +32,7 @@
 </head>
 <body>
 <br>
-<a id="add" href="<?php echo site_url(["Arbol_controler","crearArbol"])?>" class ="button"><center id="let">Add</center></a>
+<a id="add" href="<?php echo site_url(["Arbol_controler","crearArbol"])?>" class ="icon-add-to-list"><center id="let"></center></a>
 <?php
         $html = "";
             foreach ($consulta->result() as $fila) {
@@ -39,9 +40,9 @@
                             <td>$fila->id</td><td>$fila->nom</td><td>$fila->especie</td>
                             <td>$fila->nombre</td><td>$fila->sizea</td>
                             <td>$fila->monto</td>
-                            <td><a href=".site_url(['Arbol_controler',"editar/$fila->nombre/$fila->persona"]).">Edit</a>
-                            / <a href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"]).">D</a>
-                            / <a href=".site_url(['Arbol_controler',"formulario/$fila->id"]).">I</a></td></td>";
+                            <td><a class='icon-edit' href=".site_url(['Arbol_controler',"editar/$fila->nombre/$fila->persona"])."></a>
+                            / <a class='icon-trash' href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"])."></a>
+                            / <a class='icon-instagram' href=".site_url(['Arbol_controler',"formulario/$fila->id"])."></a></td></td>";
             }
             
             echo "

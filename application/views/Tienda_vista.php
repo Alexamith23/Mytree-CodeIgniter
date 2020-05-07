@@ -10,11 +10,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    
+    <style type="text/css">
+        .div_b {
+            background-color:black;
+            width: 500px;
+            height:200px;
+            position: relative;
+            left: 105px;
+        }
+    </style>
     <title>Arbol</title>
 </head>
 <body>
 <br><br><br><br><br>
-<form action="<?php echo site_url(['Arbol_controler','registrar/'.$admin])?>" method="post" class="formu">
+<form action="<?php echo site_url(['Arbol_controler','registrar/'.$admin])?>" method="post" class="form-block" role="form">
 
 
 <input type="hidden" value ="<?php echo $correo?>" id="mail" name ="mail">
@@ -49,6 +60,9 @@
 <div class="form-group">
     <h1><?php echo $mensaje ?> </h1>
 </div>
+<script>paypal.Buttons().render('body');</script>
 </form>
+
+            
 </body>
 </html>
