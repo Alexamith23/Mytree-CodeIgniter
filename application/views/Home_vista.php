@@ -36,7 +36,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Un millón de árboles</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Un Millón de Árboles</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -62,7 +62,7 @@
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
         <h1 class="mx-auto my-0 text-uppercase">Mytree</h1>
-        <h2 id="col" class="text-white-50 mx-auto mt-2 mb-5" >La fundación <strong>Un millón de árboles</strong> te invita a unirte y ayudar 
+        <h2 id="col" class="text-white-50 mx-auto mt-2 mb-5" >La asociación <strong>Un millón de árboles</strong> te invita a unirte y ayudar 
         al planeta a tomarse un respiro !Es gratis¡</h2>
         <a href="<?php echo site_url(["Registro_controler","registro"])?>" class="btn btn-primary js-scroll-trigger">Comenzar</a>
       </div>
@@ -74,9 +74,10 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">Organización <strong>Un millón de árboles</strong></h2>
-          <p class="text-white-50">Es una organización sin fines de lucro, la cual busca sembrar un millón de árboles en diferentes partes del mundo,
-               con la ayuda de donaciones de sus usuarios sean nacionales o extranjeros darle un respiro al planeta sembramdo un árbol.
+          <h2 class="text-white mb-4">Asociación <strong>Amigos de un millón de árboles</strong></h2>
+          <p class="text-white-50">Es una Asociación sin fines de lucro, la cual busca ser auto sostenible mediante la venta de árboles, mantenimiento
+            y organización de eventos. 
+            Realizamos trabajos de conservación y desarrollo de nuestros recursos naturales mediante la siembra de árboles nativos. 
           </p>
         </div>
       </div>
@@ -172,7 +173,7 @@
               <i class="fas fa-map-marked-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Dirección</h4>
               <hr class="my-4">
-              <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+              <div class="small text-black-50">La Unión de Venecia, San Carlos Costa Rica</div>
             </div>
           </div>
         </div>
@@ -184,7 +185,7 @@
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4">
               <div class="small text-black-50">
-                <a href="#">unmillondearboles@gmail.com</a>
+                <a href="#">Infoproyectomillondearboles@gmail.com</a>
               </div>
             </div>
           </div>
@@ -196,21 +197,18 @@
               <i class="fas fa-mobile-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Teléfono</h4>
               <hr class="my-4">
-              <div class="small text-black-50">(506) 8763-0987</div>
+              <div class="small text-black-50">(506) 2472 - 2983 / 6111 - 8567</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="social d-flex justify-content-center">
-        <a href="#" class="mx-2">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="mx-2">
+        <a href="https://www.facebook.com/lahoraecologica.21" class="mx-2">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-github"></i>
+        <a href="https://www.instagram.com/millon_de_arboles/" class="mx-2">
+          <i class="fab fa-instagram"></i>
         </a>
       </div>
 
