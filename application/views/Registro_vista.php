@@ -1,5 +1,6 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
+    $mensaje = $this->session->flashdata('Submit');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,6 +115,7 @@
             </div>
         </div>
     </form>
+    <?php echo "<h1>$mensaje</h1>" ?>
     </div>
     
 </div>

@@ -6,6 +6,13 @@
     $myJSONP = json_encode($myArrP);
     $myArrPA = $this->session->arboles_clientes->cantidad;
     $myJSONPA = json_encode($myArrPA);
+
+    $extra = $this->session->extranjeros->extranjeros;
+    $extraJson = json_encode($extra);
+
+    $nacio = $this->session->nacionales->nacionales;
+    $nacioJson = json_encode($nacio);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,22 +33,29 @@
     var o = JSON.parse(<?php echo $myJSONP?>);
     var oA = JSON.parse(<?php echo $myJSONPA?>);
     var oAB = JSON.parse(<?php echo $myJSON?>);
+    var extra = JSON.parse(<?php echo $extraJson?>);
+    var nacio = JSON.parse(<?php echo $nacioJson?>);
+    
     var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Árboles', 'Personas', 'Árbol cliente'],
+        labels: ['Árboles', 'Personas', 'Árbol cliente', 'Donaciones extranjeras', 'Donaciones nacionales'],
         datasets: [{
             label: 'Estadísticas',
-            data: [oAB, o, oA],
+            data: [oAB, o, oA, extra, nacio],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(178, 13, 171, 0.3)',
+                'rgba(8, 186, 54, 0.3)'
             ],
             borderColor: [
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
-                'rgba(153, 102, 255, 1)'
+                'rgba(153, 102, 255, 1)',
+                'rgba(178, 13, 171, 1)',
+                'rgba(8, 186, 54, 2)'
             ],
             borderWidth: 1
         }]

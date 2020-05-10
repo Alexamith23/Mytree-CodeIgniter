@@ -67,7 +67,6 @@ class Arbol_controler extends CI_Controller {
     }
     public function registrar($admin)
     {
-        echo "<h1>$admin</h1>";
         $this->load->model('Arbol_modelo');
         $correo = $this->input->post('mail');
         $especie = $this->input->post('tipo');

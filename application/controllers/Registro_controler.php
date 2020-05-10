@@ -29,12 +29,17 @@ class Registro_controler extends CI_Controller {
     public function save()
 	{
         $this->load->model('Registro_modelo');        
-
-        $data = array('nombre'=>$this->input->post('nombre'),'apellido'=>$this->input->post('apellidos'),'telefono'=>$this->input->post('telefono')
+		if(($this->input->post('nombre') && $this->input->post('apellidos')&&$this->input->post('telefono') && $this->input->post('email')
+		&&$this->input->post('pass') &&$this->input->post('direccion')&&$this->input->post('pais'))== "")
+		{
+			$this->session->set_flashdata('Submit',"Por favor rellene todos los campos");
+			$this->load->view('Registro_vista');
+		}
+		else{
+			$data = array('nombre'=>$this->input->post('nombre'),'apellido'=>$this->input->post('apellidos'),'telefono'=>$this->input->post('telefono')
         ,'correo'=>$this->input->post('email'),'contra'=>$this->input->post('pass'),'direccion'=>$this->input->post('direccion'),'pais'=>$this->input->post('pais')
-        ,'administrador'=>$this->input->post('administrador'));
-
-        $valor = $this->Registro_modelo->guardar($data);
+		,'administrador'=>$this->input->post('administrador'));
+		$valor = $this->Registro_modelo->guardar($data);
         if($valor)
         {
 			$this->load->view('Loguin_vista');
@@ -44,6 +49,10 @@ class Registro_controler extends CI_Controller {
 			$this->load->view('Registro_vista');
             echo "<h1>El usuario no se pudo agregar</h1>";
         }
+		}
+        
+
+        
         
     }
 }

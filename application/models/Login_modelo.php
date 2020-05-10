@@ -1,10 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login_modelo extends CI_Model
 {
 
-    /**
+  /**
    *  Validate in the database that the user exists
    *
    * @param $username  The username
@@ -45,7 +45,7 @@ class Login_modelo extends CI_Model
     }
   }
 
-  public function eliminarArbolM($id_cliente_arbol,$nombre, $id_arbol)
+  public function eliminarArbolM($id_cliente_arbol, $nombre, $id_arbol)
   {
     $query = $this->db->query("DELETE FROM cliente_arbol WHERE id = '$id_cliente_arbol'");
     $querylll = $this->db->query("DELETE FROM ARBOL_imagen WHERE arbol = '$id_arbol'");
@@ -60,38 +60,55 @@ class Login_modelo extends CI_Model
   public function arbolesRegistrados()
   {
     $query = $this->db->query("SELECT COUNT(id) AS cantidad FROM arbol");
-    if ($query->result()) 
-    {
+    if ($query->result()) {
       return $query->result()[0];
-    } 
-    else 
-    {
+    } else {
       return false;
     }
   }
   public function cantPersonas()
   {
     $query = $this->db->query("SELECT COUNT(id) AS cantidad FROM persona");
-    if ($query->result()) 
-    {
+    if ($query->result()) {
       return $query->result()[0];
-    } 
-    else 
-    {
+    } else {
       return false;
     }
   }
   public function arboles_clientes()
   {
     $query = $this->db->query("select count(distinct id_owner) AS cantidad from cliente_arbol");
-    if ($query->result()) 
-    {
+    if ($query->result()) {
       return $query->result()[0];
-    } 
-    else 
-    {
+    } else {
       return false;
     }
   }
-  
+
+  public function extranjeros()
+  {
+    $query = $this->db->query("select COUNT(cliente_arbol.id) AS extranjeros FROM cliente_arbol
+    INNER JOIN persona
+    ON cliente_arbol.id_owner = persona.id
+    INNER JOIN country 
+    ON country.id = persona.pais AND country.name <>'Costa Rica'");
+    if ($query->result()) {
+      return $query->result()[0];
+    } else {
+      return false;
+    }
+  }
+  public function nacionales()
+  {
+    $query = $this->db->query("SELECT COUNT(cliente_arbol.id) AS nacionales FROM cliente_arbol
+    INNER JOIN persona
+    ON cliente_arbol.id_owner = persona.id
+    INNER JOIN country 
+    ON country.id = persona.pais AND country.name = 'Costa Rica'");
+    if ($query->result()) {
+      return $query->result()[0];
+    } else {
+      return false;
+    }
+  }
 }

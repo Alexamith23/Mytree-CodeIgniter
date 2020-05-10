@@ -12,6 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo base_url("Bootstrap/")?>style.css" rel="stylesheet">
+    <link href="<?php echo base_url("Bootstrap/")?>style.css" >
+    <link href="<?php echo base_url("Bootstrap/")?>style.css" >
     <style type="text/css">
 
     #add
@@ -28,6 +30,18 @@
         top: 137px;
 	}
     </style>
+    <script type ="text/javascript">
+        function validar()
+        {
+            var respuesta = confirm("Seguro quiere eliminar el arbol?");
+            if(respuesta)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
     <title>Arboles</title>
 </head>
 <body>
@@ -41,7 +55,7 @@
                             <td>$fila->nombre</td><td>$fila->sizea</td>
                             <td>$fila->monto</td>
                             <td><a class='icon-edit' href=".site_url(['Arbol_controler',"editar/$fila->nombre/$fila->persona"])."></a>
-                            / <a class='icon-trash' href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"])."></a>
+                            / <a class='icon-trash' onclick='return validar()' href=".site_url(['Login_controler',"eliminarArbol/$fila->id2/$fila->nombre/$fila->id/$admin/$persona"])."></a>
                             / <a class='icon-instagram' href=".site_url(['Arbol_controler',"formulario/$fila->id"])."></a></td></td>";
             }
             
@@ -71,6 +85,7 @@
 
 
     <br>
-    
+<script src="<?php echo base_url("Alertas/")?>alertify.js"></script>
+<script src="<?php echo base_url("Alertas/")?>alertify.min.js"></script>
 </body>
 </html>
