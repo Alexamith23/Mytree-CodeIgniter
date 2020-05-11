@@ -6,13 +6,10 @@
     $myJSONP = json_encode($myArrP);
     $myArrPA = $this->session->arboles_clientes->cantidad;
     $myJSONPA = json_encode($myArrPA);
-
     $extra = $this->session->extranjeros->extranjeros;
     $extraJson = json_encode($extra);
-
     $nacio = $this->session->nacionales->nacionales;
     $nacioJson = json_encode($nacio);
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">

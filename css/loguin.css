@@ -1,0 +1,36 @@
+.loguin
+{
+    background-color: aqua;
+}
+
+#formulario
+{
+    position: relative;
+    border-radius: 10px;
+    bottom: 350px;
+}
+#decoracion
+{
+    position: relative;
+    top: 75px;
+    
+}
+
+#barra
+{
+    background-color: #a9d4a9;
+  
+}
+
+.x
+{
+    position: absolute;
+    font-size: 20px;  
+    left: 50px;
+}
+.y
+{
+    
+    font-size: 16px;  
+    color: #3A95DA;
+}

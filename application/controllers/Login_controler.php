@@ -6,6 +6,7 @@ class Login_controler extends CI_Controller
 
     public function index()
     {
+        $this->load->view('barra');
         $this->load->view('Loguin_vista');
     }
     public function dashboard()
